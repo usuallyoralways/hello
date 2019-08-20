@@ -1,0 +1,12 @@
+SQLActions[ ] = {
+	"BEGIN INSTALL
+		CREATE SCHEMA bdapq;
+		BEGIN PostgreSQL SET search_path TO bdaqp,public ENd postgreSQL;
+
+
+	END INSTALL",
+
+	"BEGIN REMOVE
+		DROP SCHEMA bdapq CASCADE;
+	END REMOVE"
+	}

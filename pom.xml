@@ -1,0 +1,139 @@
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation=
+                "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Above is all boilerplate. Next: your project's "Maven coordinates" -->
+
+    <groupId>com.example</groupId>
+    <artifactId>pljavacode</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <!-- Coordinates are nice, but so are names and descriptions for humans. -->
+
+    <name>pljava-app</name>
+    <description>Project that provides a Hello function</description>
+
+    <!--
+             Many Maven plugins care what character set encoding your files are in.
+      For this example I've chosen the most restrictive (US-ASCII). Change if
+      your files use a different encoding, but be sure not to lie. You should
+      be sure the encoding named here IS the way your source files are coded.
+    -->
+
+    <properties>
+        <project.build.sourceEncoding>US-ASCII</project.build.sourceEncoding>
+    </properties>
+
+    <!-- Here's where you say your project depends on a pljava-api version. -->
+
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.junit/org.junit -->
+        <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>org.junit</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>pljava-api</artifactId>
+            <version>1.5.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.16.Final</version>
+            <!--        <scope>system</scope>-->
+            <!--        <systemPath>${project.basedir}/lib/hibernate-core-5.2.16.Final.jar</systemPath>-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>5.2.16.Final</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.hops.metadata</groupId>
+            <artifactId>hops-metadata-dal</artifactId>
+            <version>2.8.2.8-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>D:\Documents\李军研究生\CODE\plextentedmaster\pljava-code\lib\hops-metadata-dal-2.8.2.8-SNAPSHOT.jar
+            </systemPath>
+        </dependency>
+
+    </dependencies>
+
+    <!-- The rest here is pretty much boilerplate. -->
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+
+
+                    <archive>
+                        <manifest>
+                            <!-- This identifies and version-stamps the jar.
+                                                  Not essential, but easy and useful. -->
+                            <addDefaultImplementationEntries>
+                                true
+                            </addDefaultImplementationEntries>
+                        </manifest>
+
+                        <manifestSections>
+                            <!-- This identifies a file in the jar named
+                                                  pljava.ddr as an SQLJDeploymentDescriptor. -->
+                            <manifestSection>
+                                <name>pljava.ddr</name>
+                                <manifestEntries>
+                                    <SQLJDeploymentDescriptor>
+                                        true
+                                    </SQLJDeploymentDescriptor>
+                                </manifestEntries>
+                            </manifestSection>
+                        </manifestSections>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
